@@ -86,12 +86,53 @@ def depthFirstSearch(problem: SearchProblem):
     print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+    visited = []
+    my_stack = util.Stack()
+    start_State = problem.getStartState()
+    my_stack.push((start_State, [], 0))
+    goal_found = False
+
+    while goal_found == False:
+        node = problem.getSuccessors(problem.getStartState())
+        node, path, cost = my_stack.pop()
+        
+        if problem.isGoalState(node):
+            goal_found = True
+            return path
+        else:
+            visited.append(node)
+        for child, move, my_cost in problem.getSuccessors(node):
+            if(not (child in visited)):
+                my_stack.push((child, path + [move], my_cost))
+
+
+    #util.raiseNotDefined()
 
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+    visited = []
+    my_queue = util.Queue()
+    start_State = problem.getStartState()
+    my_queue.push((start_State, [], 0))
+    goal_found = False
+
+    while goal_found == False:
+        node = problem.getSuccessors(problem.getStartState())
+        node, path, cost = my_queue.pop()
+        
+        if problem.isGoalState(node):
+            goal_found = True
+            return path
+        else:
+            visited.append(node)
+        for child, move, my_cost in problem.getSuccessors(node):
+            if(not (child in visited)):
+                my_queue.push((child, path + [move], my_cost))
+
+    #util.raiseNotDefined()
 
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
