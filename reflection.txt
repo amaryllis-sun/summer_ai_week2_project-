@@ -1,0 +1,3 @@
+At first, my PacMan game was not running so I went to the TA Office Hours for help
+The TA's helped me and I figured out how to run the program
+Furthermore, the TA's helped further explain to me the algorithm 
